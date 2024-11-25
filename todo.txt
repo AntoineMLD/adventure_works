@@ -1,0 +1,5 @@
+script qui met en place l'env
+script qui fait le login a azure
+script qui créer le sas pour les tokens
+
+
