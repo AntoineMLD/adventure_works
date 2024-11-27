@@ -29,9 +29,8 @@ def download_blob(container_client, blob_name, local_folder):
     """
     Télécharge un fichier blob spécifique depuis Azure et le sauvegarde localement.
     """
-    local_path = os.path.join(local_folder, blob_name)  # Construire le chemin local correspondant
-    os.makedirs(os.path.dirname(local_path), exist_ok=True)  # Créer le dossier local si nécessaire
-
+    local_path = os.path.join(local_folder, blob_name)  
+    os.makedirs(os.path.dirname(local_path), exist_ok=True) 
     # Télécharger le fichier
     print(f"Téléchargement du fichier : {blob_name}")
     with open(local_path, "wb") as file:
@@ -75,9 +74,7 @@ if __name__ == '__main__':
     container_client = ContainerClient.from_container_url(container_url=sas_url)
     print_blob_hierarchy(container_client)
 
-    # Demander confirmation avant de commencer le téléchargement
-    input("Appuyez sur Entrée pour commencer le téléchargement...")
-
+    
     # Télécharger tous les blobs récursivement
     download_blobs_from_sas_url(sas_url, local_folder)
 

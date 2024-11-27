@@ -3,6 +3,8 @@ import datetime
 import os
 from azure.storage.blob import ContainerClient, ContainerSasPermissions, generate_container_sas, BlobServiceClient
 
+
+
 class SASSamples:
     def create_service_sas_container(self, container_client: ContainerClient, account_key: str):
         # Créer un SAS token valide pour un jour

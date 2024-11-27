@@ -42,7 +42,7 @@ def get_filtered_table(connection):
         print(f"Error executing SQL query in get_filtered_table : {e}")
         return None
     
-def extract_data_to_csv(table_name, connection, output_dir='staging'):
+def extract_data_to_csv(table_name, connection, output_dir='staging/bdd_files'):
     """Extract data from the specified table and save it to a CSV file"""
     try:
         # Create output directory if it doesn't exist
