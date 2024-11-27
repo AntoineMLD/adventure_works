@@ -135,10 +135,12 @@ venv.bak/
 # Spyder project settings
 .spyderproject
 .spyproject
-
+downloaded_blobs
+staging
+output_images
 # Rope project settings
 .ropeproject
-
+sas_url.txt
 # mkdocs documentation
 /site
 exported_data/

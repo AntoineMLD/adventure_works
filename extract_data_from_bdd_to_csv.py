@@ -31,7 +31,7 @@ def get_filtered_table(connection):
         sql_query = """
         SELECT TABLE_SCHEMA + '.' + TABLE_NAME AS full_table_name 
         FROM information_schema.TABLES 
-        WHERE TABLE_SCHEMA IN ('Person', 'Production', 'Sales')"""
+        WHERE TABLE_SCHEMA IN ('Person', 'Production', 'Sales') AND TABLE_TYPE = 'BASE TABLE';"""
         
         cursor.execute(sql_query)
         table_name = cursor.fetchall()
@@ -42,7 +42,7 @@ def get_filtered_table(connection):
         print(f"Error executing SQL query in get_filtered_table : {e}")
         return None
     
-def extract_data_to_csv(table_name, connection, output_dir='exported_data'):
+def extract_data_to_csv(table_name, connection, output_dir='staging'):
     """Extract data from the specified table and save it to a CSV file"""
     try:
         # Create output directory if it doesn't exist
