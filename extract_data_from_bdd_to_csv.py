@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 def connect_to_database():
     """Establish database connection using environment variables"""
-    load_dotenv()  # Load environment variables from .env file
+    load_dotenv()  
     
     # Construct connection string
     SERVER = os.getenv("SERVER")

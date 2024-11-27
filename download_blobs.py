@@ -8,7 +8,7 @@ def print_blob_hierarchy(container_client):
     print("Arborescence des blobs dans le conteneur :")
     blob_names = [blob.name for blob in container_client.list_blobs()]
     
-    # Organiser les blobs en une arborescence
+    # Organise les blobs en une arborescence
     file_tree = {}
     for blob_name in blob_names:
         parts = blob_name.split('/')
@@ -16,7 +16,7 @@ def print_blob_hierarchy(container_client):
         for part in parts:
             current_level = current_level.setdefault(part, {})
     
-    # Afficher l'arborescence
+    # Affiche l'arborescence
     def print_tree(tree, indent=""):
         for key, subtree in tree.items():
             print(f"{indent}{key}")
@@ -31,7 +31,7 @@ def download_blob(container_client, blob_name, local_folder):
     """
     local_path = os.path.join(local_folder, blob_name)  
     os.makedirs(os.path.dirname(local_path), exist_ok=True) 
-    # Télécharger le fichier
+    # Télécharge le fichier
     print(f"Téléchargement du fichier : {blob_name}")
     with open(local_path, "wb") as file:
         blob_data = container_client.get_blob_client(blob_name).download_blob()
@@ -44,16 +44,16 @@ def download_blobs_from_sas_url(sas_url, local_folder):
     # Créer le dossier local racine si nécessaire
     os.makedirs(local_folder, exist_ok=True)
 
-    # Lister tous les blobs et traiter chaque chemin
+    
     print("Liste des blobs dans le conteneur :")
     
-    # Lister tous les blobs
+    # Liste tous les blobs
     blobs = container_client.list_blobs()
 
-    # Télécharger récursivement les blobs et créer des dossiers le cas échéant
+    # Télécharge récursivement les blobs et créer des dossiers le cas échéant
     for blob in blobs:
         blob_name = blob.name
-        if '.' in os.path.basename(blob_name):  # Vérifier si c'est un fichier
+        if '.' in os.path.basename(blob_name): 
             download_blob(container_client, blob_name, local_folder)
         else:
             print(f"Création du dossier : {blob_name}")
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     with open("sas_url.txt", "r") as file:
         sas_url = file.read().strip()
 
-    # Dossier où télécharger les blobs
+   
     local_folder = "downloaded_blobs"
 
     # Afficher l'arborescence des blobs dans le conteneur
@@ -75,6 +75,6 @@ if __name__ == '__main__':
     print_blob_hierarchy(container_client)
 
     
-    # Télécharger tous les blobs récursivement
+    # Télécharge tous les blobs récursivement
     download_blobs_from_sas_url(sas_url, local_folder)
 

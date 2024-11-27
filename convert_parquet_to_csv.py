@@ -2,13 +2,13 @@ import pandas as pd
 import sys
 
 def parquet_to_csv(parquet_file):
-    # Lire le fichier Parquet
+    
     try:
-        df = pd.read_parquet(parquet_file, engine='pyarrow')  # Utilisez 'fastparquet' si vous préférez
-        # Générer le nom du fichier CSV (en remplaçant l'extension .parquet par .csv)
+        df = pd.read_parquet(parquet_file, engine='pyarrow')  
+        # Génére le nom du fichier CSV 
         csv_file = parquet_file.rsplit('.', 1)[0] + '.csv'
         
-        # Sauvegarder en CSV
+        # Sauvegarde en CSV
         df.to_csv(csv_file, index=False, header=True)
         print(f"Conversion réussie. Fichier CSV généré : {csv_file}")
     except Exception as e:

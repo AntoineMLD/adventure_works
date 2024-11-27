@@ -9,6 +9,7 @@ files=(
 
 # Boucle pour chaque fichier Parquet
 for file in "${files[@]}"; do
+
     # Exécution du script Python pour chaque fichier Parquet
     echo "Conversion du fichier : $file"
     python convert_parquet_to_csv.py "$file"
