@@ -7,6 +7,8 @@ log() {
     echo "$(date '+%Y-%m-%d %H:%M:%S') [INFO] $1"
 }
 
+echo "Exécution à $(date)" >> logfile.log
+
 # 1. Lance generate_sas.py
 log "Lancement du script generate_sas.py..."
 python generate_sas.py
